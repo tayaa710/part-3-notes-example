@@ -1,16 +1,9 @@
 const mongoose = require('mongoose')
+const dotenv = require('dotenv').config();
+const password = process.argv[2]
 
-if (process.argv.length<3) {
-  console.log('give password as argument')
-  process.exit(1)
-}
-
-
-const password = encodeURIComponent(process.argv[2]);
-
-const url = `mongodb+srv://aarontaylor1279:${password}@cluster0.ugjp8.mongodb.net/noteApp?retryWrites=true&w=majority&appName=Cluster0`
-mongoose.set('strictQuery',false)
-
+// DO NOT SAVE YOUR PASSWORD TO GITHUB!!
+const url = process.env.MONGODB_URI;
 mongoose.connect(url)
 
 const noteSchema = new mongoose.Schema({
@@ -21,18 +14,18 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model('Note', noteSchema)
 
 const note = new Note({
-  content: 'HTML is easy',
+  content: 'Baggis, Boggis, Bince',
   important: true,
 })
 
-Note.find({}).then(result => {
-    result.forEach(note => {
-        console.log(note)
-    })
-    mongoose.connection.close()
-})
+// Note.find({}).then(result => {
+//     result.forEach(note => {
+//         console.log(note)
+//     })
+//     mongoose.connection.close()
+// })
 
-/* note.save().then(result => {
+note.save().then(result => {
   console.log(result)
   mongoose.connection.close()
-}) */
+}) 
