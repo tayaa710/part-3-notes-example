@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "build:ui": "rm -rf dist && cd ../frontendNotes && npm run build && cp -r dist ../backendNotes",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
+    "lint": "eslint ."
   },
   "author": "Aaron Taylor",
   "license": "MIT",
@@ -19,6 +20,10 @@
     "mongoose": "^8.9.5"
   },
   "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@stylistic/eslint-plugin-js": "^3.0.1",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
     "nodemon": "^3.1.9"
   }
 }
