@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv').config()
 const password = process.argv[2]
 
 // DO NOT SAVE YOUR PASSWORD TO GITHUB!!
-const url = process.env.MONGODB_URI;
+const url = process.env.MONGODB_URI
 mongoose.connect(url)
 
 const noteSchema = new mongoose.Schema({
@@ -28,4 +28,4 @@ const note = new Note({
 note.save().then(result => {
   console.log(result)
   mongoose.connection.close()
-}) 
+})
